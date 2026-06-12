@@ -1,0 +1,4 @@
+interface:
+  display_name: "Geometry Preview"
+  short_description: "Topology-aware geometry preview and preflight"
+  default_prompt: "Use $geometry-preview to turn this geometry request into a previewable CAD candidate with QA artifacts."
