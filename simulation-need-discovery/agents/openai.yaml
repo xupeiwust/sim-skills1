@@ -1,0 +1,4 @@
+interface:
+  display_name: "Simulation Need Discovery"
+  short_description: "Clarify simulation goals before modeling"
+  default_prompt: "Use $simulation-need-discovery to clarify the real simulation need, scope, missing inputs, and deliverables before starting work."
