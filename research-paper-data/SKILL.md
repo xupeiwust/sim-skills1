@@ -11,10 +11,14 @@ upstream provider URLs by hand.
 
 ## API Contract
 
-Use `$env:SIM_STUDIO_API_BASE_URL` and `$env:SIM_STUDIO_API_KEY` on Windows
-PowerShell, or the equivalent environment variables in the current shell. Send
-the Sim Studio API key as a bearer token. Do not ask the user for Crossref,
-OpenAlex, CORE, Unpaywall, PubMed, or other provider keys.
+Use `$env:SIM_STUDIO_RESEARCH_API_BASE_URL` and `$env:SIM_STUDIO_API_KEY` on
+Windows PowerShell, or the equivalent environment variables in the current
+shell. Send the Sim Studio API key as a bearer token. Do not ask the user for
+Crossref, OpenAlex, CORE, Unpaywall, PubMed, or other provider keys.
+
+`SIM_STUDIO_RESEARCH_API_BASE_URL` is the Console/root API origin, not the
+OpenAI-compatible model base. Do not append `/research/*` to
+`SIM_STUDIO_API_BASE_URL` when that value ends in `/v1`.
 
 Available endpoints:
 
@@ -26,10 +30,14 @@ Available endpoints:
 Example:
 
 ```powershell
+$researchBase = $env:SIM_STUDIO_RESEARCH_API_BASE_URL
+if (-not $researchBase -and $env:SIM_STUDIO_API_BASE_URL) {
+  $researchBase = $env:SIM_STUDIO_API_BASE_URL -replace "/v1/?$", ""
+}
 $body = @{ query = "large language models scientific discovery"; limit = 8 } | ConvertTo-Json
 Invoke-RestMethod `
   -Method Post `
-  -Uri "$env:SIM_STUDIO_API_BASE_URL/research/papers/search" `
+  -Uri "$researchBase/research/papers/search" `
   -Headers @{ Authorization = "Bearer $env:SIM_STUDIO_API_KEY" } `
   -ContentType "application/json" `
   -Body $body
