@@ -1,6 +1,6 @@
 ---
 name: research-paper-data
-description: Use Huanjing Studio Research API for scholarly paper search, DOI/arXiv/PMID/PMCID resolution, legal open-access PDF discovery, and paper reference relationship lookup. Use when users ask to find papers, inspect paper metadata, get paper PDFs, resolve scholarly identifiers, or build lightweight paper context for research writing.
+description: Use Huanjing Studio Research API for scholarly paper search, DOI/arXiv/PMID/PMCID resolution, legal open-access PDF discovery, and paper reference relationship lookup. Use when users ask to find papers, inspect paper metadata, get paper PDFs, resolve scholarly identifiers, or build lightweight paper context for research writing. For /research/* requests, always use SIM_STUDIO_RESEARCH_API_BASE_URL, or strip trailing /v1 from SIM_STUDIO_API_BASE_URL; never append /research/* to the OpenAI-compatible /v1 model API base.
 ---
 
 # Research Paper Data
