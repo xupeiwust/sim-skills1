@@ -31,6 +31,11 @@ right primitive.
    - First prove the solver can build, solve, and export the leading metric.
    - Use simplifications only when they are explicitly labelled and tracked.
    - Prefer one bounded step at a time so each failure has a clear cause.
+   - When the full reference target is large, coupled, or under-specified, use
+     progressive fidelity: add geometry detail, secondary physics, coupling,
+     sweeps, optimization, or calibration only after the prior layer has
+     exported evidence and passed its acceptance check, unless a bypass reason
+     is recorded.
 4. Gate later results on earlier evidence.
    - If the leading metric fails, stop and diagnose before producing secondary
      figures.

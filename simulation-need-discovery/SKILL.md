@@ -126,7 +126,27 @@ Use the cheapest artifact that answers the current uncertainty:
 Do not launch a heavy solver just to discover that the geometry, objective, or
 deliverable was misunderstood.
 
-### 6. Route Geometry And Solver Work
+### 6. Apply Progressive Fidelity
+
+For non-trivial simulation work, use progressive fidelity as the default
+operating loop:
+
+1. Build the minimum credible model that can test the scoped claim.
+2. Solve or export a concrete artifact from that model.
+3. Run the acceptance check for the current claim.
+4. Add the next fidelity layer only after the prior layer has evidence, or after
+   recording a clear reason to bypass the gate.
+
+Do not add detailed geometry, secondary physics, coupling, sweeps, optimization,
+calibration, or polished automation until the current layer has evidence that it
+runs and supports the scoped claim. If a layer must be skipped because the
+decision, data, or stakeholder requirement demands it, document the bypass
+reason and the extra risk it creates.
+
+Keep each layer solver-neutral in the plan: name the uncertainty it reduces, the
+artifact it will export, and the check that allows escalation.
+
+### 7. Route Geometry And Solver Work
 
 Use `geometry-preview` for topology-aware geometry preflight before heavy solver
 work when geometry matters:
@@ -144,7 +164,7 @@ Escalate to solver-specific skills only when the uncertainty is solver-specific:
 
 This skill should not duplicate solver recipes.
 
-### 7. Scope The Modeling Path
+### 8. Scope The Modeling Path
 
 When the request is too broad, convert it into a layered path:
 
@@ -160,7 +180,7 @@ validation data.
 Good pushback names the risk, offers a cheaper artifact, and states both what
 that artifact would and would not prove.
 
-### 8. Validate Before Shipping
+### 9. Validate Before Shipping
 
 Before handing over results, check that the artifact supports the agreed claim:
 
