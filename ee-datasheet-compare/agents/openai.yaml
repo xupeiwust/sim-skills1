@@ -1,0 +1,4 @@
+interface:
+  display_name: "EE Datasheet Compare"
+  short_description: "Check part replacements from datasheets"
+  default_prompt: "Use $ee-datasheet-compare to compare these datasheets and produce an EE replacement-risk table."
